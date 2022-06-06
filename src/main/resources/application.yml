@@ -1,0 +1,74 @@
+server:
+  port: 8089
+
+###ThymeLeaf配置
+spring:
+  thymeleaf:
+    cache: false # 开发时关闭缓存,不然没法看到实时页面
+    #模板的模式，支持 HTML, XML TEXT JAVASCRIPT
+    mode: HTML5 # 用非严格的 HTML
+    #编码 可不用配置
+    encoding: UTF-8
+    #内容类别,可不用配置
+    servlet:
+      content-type: text/html
+  application:
+    name: bank
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://47.115.200.30:3306/bank?serverTimezone=GMT%2B8
+    username: planeter
+    password: 1a2b3c4d+1S
+  redis:
+    host: 47.115.200.30
+    port: 6379
+    password: 6lMJz*6KPBVj%uyQmKMj$$R%Zd83$6V!
+    timeout: 800
+    jedis:
+      pool:
+        max-active: 1000
+        max-wait: 1000ms
+        max-idle: 20
+        min-idle: 5
+
+  mail:
+    host: smtp.126.com
+    port: 465
+    protocol: smtps
+    default-encoding: utf-8
+    username: planeter@126.com
+    password: AKFTIZMKULTWHNSD
+    properties:
+      from: planeter@126.com
+      mail:
+        smtp:
+          starttls:
+            enable: true
+            required: true
+
+  main:
+    allow-bean-definition-overriding: true
+
+
+  jpa:
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    show-sql: false
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        enable_lazy_load_no_trans: true
+        dialect: org.hibernate.dialect.MySQL57Dialect
+
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+logging:
+  level:
+    root: info
+  file:
+    path: ./logs
+security:
+  jwt:
+    salt: HelloWorld
